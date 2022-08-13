@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	
+		<title>J1 Practice</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style>
+			.formfield{margin-bottom:10px;}
+		</style>
+	</head>
+	<body>
+	<p>Telemarketer or not Problem. <a href="https://web.archive.org/web/20210103175252/https://www.cemc.uwaterloo.ca/contests/computing/2018/stage%201/juniorEF.pdf">from the J1 problem hosted by the CCC.</a></p>
+	<div id="app">
+		<div class="formfield">
+			<label>4th digit from last: <label> <input v-model="fourth_digit" type="number">
+		</div>
+		<div class="formfield">
+			<label>3rd digit from lastL</label> <input v-model="third_digit" type="number">
+		</div>
+		<div class="formfield">
+			<label>2nd digit from last</label> <input type="number" v-model="second_digit">
+		</div>
+		<div class="formfield">
+			<label>last digit</label> <input v-model="last_digit" v-model="last_digit">
+		</div>
+		<div id="result">
+			<h4>Should you answer the call?</h4>
+			<h3>You should {{call_result}} the call</h3>			
+		</div>
+	</div>
+	
+	<script>
+	var app = new Vue({
+		el: '#app',
+		data:{
+			fourth_digit:0,
+			third_digit:0,
+			second_digit:0,
+			last_digit:0,
+		},
+		computed:{
+			call_result:function(){
+				if((this.fourth_digit == 8 && this.last_digit == 9) || (this.fourth_digit == 9 && this.last_digit == 8)){
+					if(this.third_digit == this.second_digit){
+						return "Ignore it";
+					}
+					else{
+						return "Answer it";
+					}
+				}
+				else{
+					return "Answer it";
+				}
+			}
+		}
+	});
+	
+	</script>
+	<!--
+		v-model will allow you to quickly bind form elements to the data property.
+		Make sure to set a default value!
+		The Computed property can be used like data, except for values that are calculated from data properties.
+		In this example 'treat_total' is computed from data properties, and 'is_happy' is computed from 'treat_total'.
+		
+		ASYNCHRONOUS LEARNING EXERCISE : J1
+		- Find any J1 problem
+		- Imagine an interface that allows the user to enter data on the webpage
+		- Build using v-model and computed properties!
+	
+	-->
+	</body>
+</html>
